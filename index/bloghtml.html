@@ -19,65 +19,67 @@
     </header>
 
     <!--bildspel av blogginlägg-->
-    <div id="bildspel">
-      <div class="bild">
-        <a href="blogposts/blogpost1.html">
-          <img
-            src="/images/OIG3.jpg"
-            alt="streamer ledsen för ha blivit bannad efter ha smittit från en bil olycka"
-          />
-        </a>
-      </div>
-      <div class="text">
-        Streamer bannad efter varit involverad i en "hit and run"
-      </div>
-
-      <div class="bild">
-        <a href="blogposts/blogpost2.html">
-          <img
-            src="/images/blog-pic.jpg"
-            alt="bild på person som kollar på olika streaming tjänster"
-          />
-        </a>
-      </div>
-      <div class="text">
-        Undersökning visar att fler och fler människor kolla på streamad
-        innehåll mer äm för förre pandemin
-      </div>
-
-      <div class="bild">
-        <a href="blogposts/blogpost3.html">
-          <img
-            src="/images/img-slide2.jpg"
-            alt="kvinna som firar framför sin dator"
-          />
-        </a>
-        <div class="text">kvinna gör stor vinst inom kryptotradeing</div>
-
-        <div class="bild">
-          <a href="blogposts/blogpost4.html">
-            <img
-              src="/images/img-slide3.jpg"
-              alt="kvinna med munskydd tar en selfie"
-            />
-          </a>
-        </div>
-        <div class="text">
-          annonym OF modell talar ut om sitt liv som OF modell
+    <div class="bildspel">
+      <div class="bild-container">
+        <div class="bild" id="bild1">
+          <img src="/images/OIG3.jpg" class="card-img" />
         </div>
 
-        <div class="bild">
-          <a href="blogposts/blogpost5.html">
-            <img
-              src="/images/img-slide4.jpg"
-              alt="vtuber streamar på internet"
-            />
-          </a>
+        <div class="bild" id="bild2">
+          <img src="/images/blog-pic.jpg" class="card-img" />
         </div>
-        <div class="text">vtuber slår nytt tittar rekord !</div>
-      </div>
-    </div>
 
-    <script></script>
+        <div class="bild" id="bild3">
+          <img src="/images/img-slide2.jpg" class="card-img" />
+        </div>
+
+        <div class="bild" id="bild4">
+          <img src="/images/img-slide3.jpg" class="card-img" />
+        </div>
+
+        <div class="bild" id="bild5">
+          <img src="/images/img-slide4.jpg" class="card-img" />
+        </div>
+      </div>
+
+      <script>
+        const view_port = document.querySelector(".bildspel");
+        const images = document.querySelector(".bild-container");
+        const bildWidth = parseFloat(getComputedStyle(images.children[0]).width);
+        const numberOfCards = Math.floor(images.children.length / 2);
+        const middleCardIndex = Math.floor(images.children.length / 2);
+      
+        function orderCards() {
+          for (let i = 0; i < images.children.length; i++) {
+            images.children[i].style.transitionDuration = "0s";
+      
+            if (i < middleCardIndex) {
+              images.children[i].style.left = `-${(middleCardIndex - i) * bildWidth}px`;
+            } else if (i > middleCardIndex) {
+              images.children[i].style.left = `${(i - middleCardIndex) * bildWidth}px`;
+            } else {
+              images.children[i].style.left = `${bildWidth / 2}px`;
+            }
+          }
+        }
+      
+        // Anropa funktionen för att ordna bilderna
+        orderCards();
+
+        /***********RESPONSIVE CODE***************/
+        let new_width = 0.0, 
+        img_width_as_precentage = 50;
+        //img_width_as_precentage = window.innerWidth < 768 ? 100 : img_width_as_precentage;
+
+        new_width= 
+        /Android[Webos][iPhone][iPad][iPod][Blackberry][IEMobile][Opera mini]/i.test(navigator.userAgent) ? 
+        (img_width_as_precentage / 100) * window.screen.width
+
+        /****************************************/
+
+
+      </script>
+      
+
   </body>
 </html>
